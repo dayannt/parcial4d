@@ -24,6 +24,7 @@
             font-family: 'Poppins', sans-serif;
             background: #000;
             color: white;
+            padding-top: 70px;
         }
 
         /* Home Animation Section */
@@ -896,9 +897,125 @@
             font-style: italic !important;
             color: #FF6568 !important;
         }
+
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 70px;
+            background: rgba(10, 10, 30, 0.101);
+            box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.088);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(8px);
+        }
+        .navbar-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+        .navbar-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #00bfff, 0 0 16px #00bfff;
+        }
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-links .nav-link {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .navbar-links .nav-link:hover {
+            color: #00bfff;
+        }
+        .navbar-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-btn {
+            padding: 10px 28px;
+            font-size: 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1.5px solid #fff;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+            transition: all 0.3s;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.18);
+            color: #00bfff;
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.5);
+        }
+        @media (max-width: 900px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 0 1rem;
+            }
+            .navbar-links {
+                gap: 1.2rem;
+            }
+            .navbar-actions {
+                gap: 0.5rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                height: 56px;
+            }
+            .navbar-logo {
+                font-size: 1.1rem;
+            }
+            .navbar-links {
+                gap: 0.7rem;
+            }
+            .nav-btn {
+                padding: 7px 16px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">AstroVerse</div>
+            <ul class="navbar-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#store" class="nav-link">Store</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="#signup" class="cta-button nav-btn">Sign Up</a>
+                <a href="#login" class="cta-button nav-btn">Log In</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Home Animation Section -->
     <section class="home-animation-section">
         <div id="home-animation"></div>
@@ -1667,6 +1784,30 @@
                 });
             }
         });
+
+        // Parallax global para todas las secciones con data-speed
+        (function() {
+            // Selecciona todas las secciones (o elementos) con data-speed
+            const parallaxSections = document.querySelectorAll('section, footer, header, main, .parallax');
+            parallaxSections.forEach(section => {
+                if (!section.hasAttribute('data-speed')) {
+                    section.setAttribute('data-speed', '0.5');
+                }
+            });
+            function parallaxScrollAll() {
+                const scrollY = window.scrollY || window.pageYOffset;
+                parallaxSections.forEach(section => {
+                    const speed = parseFloat(section.getAttribute('data-speed')) || 0.5;
+                    section.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            }
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(parallaxScrollAll);
+            });
+            window.addEventListener('resize', parallaxScrollAll);
+            window.addEventListener('load', parallaxScrollAll);
+            parallaxScrollAll();
+        })();
     </script>
 </body>
 </html>
