@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪐AstroVerse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: white;
+        }
+
+        /* Home Animation Section */
+        .home-animation-section {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #home-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(1.5);
+        }
+
+        #home-animation canvas {
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+                /* Hero Section */
+                .hero-title {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+        .hero-section {
+            height: 900px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./imagenes/fondo1.png');
+            animation: twinkle 3s ease-in-out infinite alternate;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .astronaut {
+            position: absolute;
+            left: 0;
+            top: 10%;
+            width: 580px;
+            height: 580px;
+            background: url('./imagenes/astronaut.png') center/contain no-repeat;
+            animation: float 6s ease-in-out infinite;
+            transform-origin: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(-5deg);
+            }
+            25% {
+                transform: translateY(-40px) translateX(20px) rotate(2deg);
+            }
+            50% {
+                transform: translateY(-80px) translateX(0) rotate(5deg);
+            }
+            75% {
+                transform: translateY(-40px) translateX(-20px) rotate(-2deg);
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(-5deg);
+            }
+        }
+
+        .hero-content {
+            z-index: 2;
+            width: 100%;
+            max-width: 100vw;
+            padding: 0 5vw;
+        }
+
+        /* Ocultos al cargar */
+        .hero-title,
+        .hero-subtitle,
+        .hero-description {
+            opacity: 0;
+            transform: translateX(60px);
+        }
+
+        /* Clase que activa la animación desde la derecha */
+        .aparecer-lateral {
+            animation: deslizarDerecha 1.2s ease-out forwards;
+        }
+
+        @keyframes deslizarDerecha {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Poppins', serif;
+            margin-right: 5%;
+            text-align: right;
+            white-space: nowrap;
+            font-size: 8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #00bfff,
+                0 0 8px #00bfff,
+                0 0 12px #00bfff;
+            animation: glow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(100, 181, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(100, 181, 246, 0.6)); }
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            margin-right: 5%;
+            text-align: right;
+            font-size: 2rem;
+            color: #FF6568;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            letter-spacing: 5px;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            text-align: right;
+            margin-right: 5%;
+            margin-left: 40%;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+            border: 1.5px solid #fff;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.6);
+        }
+        /* Animación lateral para entrar desde la derecha */
+
+
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background-image: url('./imagenes/boliviainteligente-bGNVZnk9ymk-unsplash\ \(1\)\ 1.jpg'); */
+            opacity: 0.5;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 1200px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 0 10px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Poppins', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #00bfff,
+                0 0 8px #00bfff,
+                0 0 12px #00bfff;
+            margin-top: 0%;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b3b3b3;
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-style: italic;
+            letter-spacing: 5px;
+        }
+
+        .feature-description {
+            color: #b3b3b3;
+            line-height: 1.6;
+        }
+
+        /* Animación desde abajo */
+        @keyframes aparecerDesdeAbajo {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animar-desde-abajo {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animar-activo {
+            animation: aparecerDesdeAbajo 0.8s ease forwards;
+        }
+
+
+
+        /* Services Section Mejorada */
+        .services-section {
+            padding: 100px 0 80px 0;
+            background: url('./imagenes/fondo3.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(20, 10, 40, 0.7);
+            z-index: 1;
+        }
+        .services-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Inicialmente ocultos y desplazados */
+        .services-title,
+        .services-subtitle,
+        .service-card {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* Animación al aparecer */
+        .animar.services-title {
+            animation: subirSuave 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+        .animar.services-subtitle {
+            animation: subirSuave 1s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+        .animar.service-card {
+            animation: subirSuave 0.8s ease-out forwards;
+        }
+
+        /* Escalonado por tarjeta */
+        .service-card.animar:nth-child(1) { animation-delay: 0.6s; }
+        .service-card.animar:nth-child(2) { animation-delay: 0.8s; }
+        .service-card.animar:nth-child(3) { animation-delay: 1s; }
+        .service-card.animar:nth-child(4) { animation-delay: 1.2s; }
+
+        @keyframes subirSuave {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px #fff2;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #00bfff,
+                0 0 8px #00bfff,
+                0 0 12px #00bfff;
+        }
+
+        .services-subtitle {
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            font-weight: 400;
+        }
+
+        .services-grid {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: rgba(30, 20, 60, 0.7);
+            border: 2px solid #a7a7ff44;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            overflow: hidden;
+            width: 320px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.28);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-bottom: 1.5px solid #a7a7ff44;
+        }
+
+        .service-content {
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            text-align: left;
+            width: 100%;
+        }
+        .service-title {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .service-description {
+            color: #e0e0e0;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        @media (max-width: 1000px) {
+            .services-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+        /* Fun Fact Section */
+        .funfact-section {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #stars-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .funfact-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .funfact-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 12px #000, 0 0 24px #000;
+            margin-bottom: 1.5rem;
+        }
+
+        .funfact-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .funfact-content span {
+            color: #FF6568;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+            background-image: url('./imagenes/fondo1.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: background 1s ease;
+        }
+
+        .gallery-section.nebula-bg {
+            background-image: url('./imagenes/s.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-section.earth-bg {
+            background-image: url('./imagenes/tierra.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-title {
+            font-family: 'Poppins', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #00bfff,
+                0 0 8px #00bfff,
+                0 0 12px #00bfff;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .gallery-content {
+            flex: 1;
+        }
+
+        .gallery-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .gallery-images {
+            flex: 1;
+            position: relative;
+            height: 400px;
+        }
+
+        .gallery-image {
+            position: absolute;
+            border-radius: 20px;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-image.nebula {
+            width: 70px;
+            height: 200px;
+            background-image: url('./imagenes/s.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            border: 3px solid rgba(102, 126, 234, 0.5);
+        }
+
+        .gallery-image.earth {
+            width: 150px;
+            height: 150px;
+            background-image: url('./imagenes/tierra.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            top: 20%;
+            right: 20%;
+            border: 3px solid rgba(79, 195, 247, 0.5);
+        }
+
+        .gallery-image.active {
+            width: 250px;
+            height: 250px;
+            z-index: 10;
+        }
+
+        .gallery-image.nebula.active {
+            box-shadow: 0 0 50px rgba(102, 126, 234, 0.6);
+            border: 3px solid rgba(102, 126, 234, 0.8);
+        }
+
+        .gallery-image.earth.active {
+            box-shadow: 0 0 50px rgba(79, 195, 247, 0.6);
+            border: 3px solid rgba(79, 195, 247, 0.8);
+        }
+
+        .gallery-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+            border: 1.5px solid #fff;
+        }
+
+        .gallery-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #lottie-comt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            transform: scale(1.2);
+        }
+
+        #lottie-comt svg {
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .solar-container,
+            .gallery-container {
+                flex-direction: column;
+            }
+
+            .astronaut {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .planet-selector {
+                flex-direction: column;
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .solar-visual {
+            width: 1000px;
+            height: 800px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .planet-img {
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(100,181,246,0.5);
+            background: #111;
+            border: 2.5px solid #fff;
+            opacity: 0.98;
+            filter: drop-shadow(0 0 16px #222);
+        }
+        .planet-img.active {
+            box-shadow: 0 0 120px 30px #00bfff, 0 0 0 18px #fff2;
+            border: 5px solid #00bfff;
+            opacity: 1;
+            filter: drop-shadow(0 0 60px #00bfff);
+        }
+        .solar-title {
+            font-family: 'Poppins', serif;
+            color: #fff;
+            text-shadow: 0 0 12px #00bfff, 0 0 24px #00bfff;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .solar-section-bg {
+            background: #10101a !important;
+            isolation: isolate;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            padding-top: 0;
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 420px;
+            min-height: 420px;
+        }
+        .solar-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #10101a;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .solar-section-bg > * {
+            position: relative;
+            z-index: 3;
+        }
+
+        .solar-system-container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            min-height: 400px;
+        }
+
+        .funfact-title, .funfact-desc {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        .funfact-title.visible, .funfact-desc.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .astro-footer {
+            background: linear-gradient(135deg, #2d084b 0%, #1a1a2e 60%, #3a1c71 100%) !important;
+        }
+        .footer-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 12px #000, 0 0 24px #000;
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        .footer-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .footer-highlight {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #FF6568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 0.5rem;
+            text-transform: lowercase;
+        }
+        .footer-highlight span {
+            text-transform: uppercase;
+            font-size: 0.95em;
+        }
+        .footer-socials {
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        .footer-socials.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .footer-icon svg {
+            transition: transform 0.3s, filter 0.3s;
+            filter: drop-shadow(0 0 8px #fff3);
+        }
+        .footer-icon:hover svg {
+            transform: scale(1.18) rotate(-8deg);
+            filter: drop-shadow(0 0 16px #FF6568);
+        }
+        .footer-copy {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        .footer-copy.visible {
+            opacity: 0.7;
+            transform: translateY(0);
+        }
+        .planet-anim {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            will-change: transform, filter, opacity;
+            filter: drop-shadow(0 0 60px #00bfff88) drop-shadow(0 0 40px #00bfff55);
+            animation: planet-move 7s linear infinite alternate, planet-float 5s ease-in-out infinite alternate;
+            pointer-events: auto;
+            transition: opacity 0.5s;
+        }
+        .planet-anim.hide {
+            opacity: 0;
+        }
+        @keyframes planet-move {
+            0% { left: -180px; transform: translateX(0); }
+            100% { left: calc(100vw - 180px); transform: translateX(0); }
+        }
+        @keyframes planet-float {
+            0% { bottom: 0; }
+            20% { bottom: 0; }
+            40% { bottom: 20px; }
+            60% { bottom: 0; }
+            80% { bottom: 30px; }
+            100% { bottom: 0; }
+        }
+        .planet-anim-container {
+            pointer-events: none;
+        }
+
+        /* Estilo para el título de la galería (Deep Space y Our Blue Planet) */
+        #gallery-subject {
+            font-style: italic !important;
+            color: #FF6568 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Animation Section -->
+    <section class="home-animation-section">
+        <div id="home-animation"></div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero-section parallax" data-speed="0.5">
+        <div class="hero-bg"></div>
+        <div class="astronaut"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">HERO SECTION</h1>
+            <p class="hero-subtitle">Explore the Mysteries of the Universe</p>
+            <p class="hero-description">
+                Immerse yourself in a universe of wonders where every star tells a story and every galaxy invites us to venture beyond our earthly limits.
+            </p>
+            <a href="#about" class="cta-button">Start your experience</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section parallax" data-speed="0.3" id="about" style="padding-bottom:0; margin-bottom:0; position:relative; overflow:hidden;">
+        <canvas id="about-stars-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;"></canvas>
+        <div class="planet-anim-container" style="position:absolute; bottom:30px; left:0; width:100%; height:180px; z-index:2; pointer-events:none;">
+            <img src="./imagenes/saturno.png" alt="Saturn" class="planet-anim" style="height:150px; width:auto; display:block; margin:auto; filter: drop-shadow(0 0 60px #00bfff88) drop-shadow(0 0 40px #00bfff55);">
+        </div>
+        <div class="container" style="position:relative; z-index:3;">
+            <!-- Título animado -->
+            <h2 class="section-title animar-desde-abajo">ABOUT US</h2>
+            <!-- Descripción animada -->
+            <p class="about-description animar-desde-abajo">
+                We are a passionate team of astronomers, scientists, and space enthusiasts united 
+                by a mission to bring the wonders of the cosmos to every corner of the planet.
+                Master IT Services with unparalleled knowledge, and develop curiosity about the 
+                universe through immersive experiences.
+            </p>
+            <!-- Cuadrícula de características con animación -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title animar-desde-abajo">Scientific Rigor</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title animar-desde-abajo">Accessibility</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title animar-desde-abajo">Community Of Cosmic Explorers</h3>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title animar-desde-abajo">Technological Innovation</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="services-title">OUR STELLAR SERVICES</h2>
+            <p class="services-subtitle">
+                We connect people to the cosmos through quality equipment, immersive experiences, accessible education, and products that bring the beauty of the universe into your everyday life.
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img class="service-image" src="./imagenes/atro.jpg" alt="AstroGear">
+                    <div class="service-content">
+                        <div class="service-title">AstroGear</div>
+                        <div class="service-description">We offer professional telescopes and observation accessories</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img class="service-image" src="./imagenes/cosmic.jpg" alt="CosmicMind">
+                    <div class="service-content">
+                        <div class="service-title">CosmicMind</div>
+                        <div class="service-description">Online programs for all ages with active scientists</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img class="service-image" src="./imagenes/sky.jpg" alt="SkyVoyage">
+                    <div class="service-content">
+                        <div class="service-title">SkyVoyage</div>
+                        <div class="service-description">Excursions to light-pollution-free locations with expert guides, equipment included</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Fact Section -->
+    <section class="funfact-section parallax-funfact" style="width:100vw; height:100vh; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <canvas id="stars-canvas" style="position:absolute; top:0; left:0; width:100vw; height:100vh; z-index:1;"></canvas>
+        <div class="funfact-content" style="position:relative; z-index:2; text-align:center; max-width:900px; margin:auto;">
+            <h2 class="funfact-title">Did you know that there are more stars in the observable universe than grains of sand on earth?</h2>
+            <p class="funfact-desc">
+                <span style="color:#FF6568; font-style:italic; font-weight:600;">Discover fascinating</span> facts about the cosmos with interactive graphics and scientific trivia that will leave you breathless.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section parallax" data-speed="0.4" id="gallery">
+        <div class="container">
+            <h2 class="gallery-title">COSMIC GALLERY</h2>
+            <div class="gallery-container">
+                <div class="gallery-content">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Explore the wonders of</h3>
+                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;" id="gallery-subject">Deep Space</h2>
+                    <p class="gallery-description" id="gallery-desc">
+                        From glowing nebulas to powerful black holes, 
+                        each image reveals the breathtaking beauty 
+                        of our universe – up close and in motion.
+                    </p>
+                    <a href="#footer" class="gallery-btn">Explore</a>
+                </div>
+                <div class="gallery-images">
+                    <div class="gallery-image nebula active" data-type="nebula"></div>
+                    <div class="gallery-image earth" data-type="earth"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer astro-footer" id="footer" style="width:100vw; height:100vh; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+        <canvas id="footer-stars-canvas" style="position:absolute; top:0; left:0; width:100vw; height:100vh; z-index:1;"></canvas>
+        <div class="footer-content" style="position:relative; z-index:2; text-align:center; max-width:900px; margin:auto;">
+            <h2 class="footer-title">ASTROVERSE IS YOUR PORTAL TO THE UNIVERSE.<br><span class="footer-highlight"><span>lEARN, OBSERVE, AND EXPLORE SPACE LIKE NEVER BEFORE.</span></span></h2>
+            <div class="footer-socials">
+                <a href="#" class="footer-icon" aria-label="Instagram"><svg width="28" height="28" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17" cy="7" r="1.5"/></svg></a>
+                <a href="#" class="footer-icon" aria-label="Twitter"><svg width="28" height="28" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4 1.64a9.09 9.09 0 01-2.88 1.1A4.48 4.48 0 0016.11 0c-2.5 0-4.5 2.01-4.5 4.5 0 .35.04.7.11 1.03C7.69 5.36 4.07 3.6 1.64.96c-.38.65-.6 1.4-.6 2.2 0 1.52.77 2.86 1.94 3.65A4.48 4.48 0 01.96 6v.06c0 2.13 1.52 3.91 3.54 4.31-.37.1-.76.16-1.16.16-.28 0-.55-.03-.81-.08.55 1.72 2.16 2.97 4.07 3A9.05 9.05 0 010 19.54a12.8 12.8 0 006.92 2.03c8.3 0 12.85-6.88 12.85-12.85 0-.2 0-.39-.01-.58A9.22 9.22 0 0023 3z"/></svg></a>
+                <a href="#" class="footer-icon" aria-label="Facebook"><svg width="28" height="28" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H6v4h4v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            </div>
+            <div class="footer-copy" style="margin-top:2rem; color:#fff; opacity:0.7; font-size:1rem;">Diseñado por Dayant - © 2024 AstroVerse</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+       // ========================
+        // ANIMACIONES LOTTIE
+        // ========================
+
+        let homeAnimation = null;
+        let comp5Animation = null;
+        let comtAnimation = null;
+
+        function initializeAnimations() {
+            console.log('Iniciando animaciones...');
+            
+            // HOME animation
+            homeAnimation = lottie.loadAnimation({
+                container: document.getElementById('home-animation'),
+                renderer: 'html',
+                loop: true,
+                autoplay: true,
+                path: './HOME ASTROVERSE.json',
+                rendererSettings: {
+                    imagePreserveAspectRatio: 'xMidYMid slice',
+                    hideOnTransparent: true
+                }
+            });
+
+            // Comp5 animation
+            comp5Animation = lottie.loadAnimation({
+                container: document.getElementById('lottie-omp5'),
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: './comp 5.json',
+                rendererSettings: {
+                    imagePreserveAspectRatio: 'xMidYMid slice'
+                }
+            });
+
+            // Comt animation
+            comtAnimation = lottie.loadAnimation({
+                container: document.getElementById('lottie-comt'),
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: './com7.json',
+                rendererSettings: {
+                    imagePreserveAspectRatio: 'xMidYMid slice'
+                }
+            });
+
+            // Función para actualizar una animación específica
+            function updateAnimation(animation, element, name) {
+                if (!animation || !element) {
+                    console.log(`${name}: No animation or element found`);
+                    return;
+                }
+
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Progreso: 0 cuando la parte superior entra, 1 cuando la parte inferior sale
+                let progress = 0;
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    const totalScroll = windowHeight + rect.height;
+                    const scrolled = windowHeight - rect.top;
+                    progress = Math.max(0, Math.min(1, scrolled / totalScroll));
+                }
+
+                const frame = Math.floor(progress * animation.totalFrames);
+                console.log(`${name} - Frame: ${frame} de ${animation.totalFrames} (progress=${progress})`);
+                animation.goToAndStop(frame, true);
+            }
+
+            // Función para actualizar todas las animaciones
+            function updateAllAnimations() {
+                console.log('--- Actualizando animaciones ---');
+                updateAnimation(homeAnimation, document.getElementById('home-animation'), 'Home');
+                updateAnimation(comp5Animation, document.getElementById('lottie-comp5'), 'Comp5');
+                updateAnimation(comtAnimation, document.getElementById('lottie-comt'), 'Comt');
+                console.log('--- Fin de actualización ---');
+            }
+
+            // Esperar a que las animaciones estén cargadas
+            const animations = [homeAnimation, comp5Animation, comtAnimation];
+            let loadedCount = 0;
+
+            animations.forEach(animation => {
+                animation.addEventListener('DOMLoaded', () => {
+                    loadedCount++;
+                    console.log('Animación cargada. Total cargadas:', loadedCount);
+                    
+                    if (loadedCount === animations.length) {
+                        console.log('Todas las animaciones cargadas');
+                        
+                        // Añadir event listeners
+                        window.addEventListener('scroll', () => {
+                            console.log('Scroll detectado');
+                            requestAnimationFrame(updateAllAnimations);
+                        });
+
+                        window.addEventListener('resize', () => {
+                            console.log('Resize detectado');
+                            requestAnimationFrame(updateAllAnimations);
+                        });
+
+                        // Trigger inicial
+                        updateAllAnimations();
+                    }
+                });
+            });
+
+            // Añadir botón de prueba
+            const testButton = document.createElement('button');
+            testButton.textContent = 'Probar Animaciones';
+            testButton.style.position = 'fixed';
+            testButton.style.top = '10px';
+            testButton.style.right = '10px';
+            testButton.style.zIndex = '9999';
+            testButton.onclick = () => {
+                console.log('Probando animaciones manualmente...');
+                updateAllAnimations();
+            };
+            document.body.appendChild(testButton);
+        }
+
+        // Iniciar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAnimations);
+        } else {
+            initializeAnimations();
+        }
+
+        // ========================
+        // PARALLAX SCROLL
+        // ========================
+        window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax');
+
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.speed;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+        });
+
+        // ========================
+        // INTERSECTION OBSERVERS
+        // ========================
+        const serviceCardsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('animate');
+            }, index * 200);
+            }
+        });
+        }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.service-card').forEach(card => {
+        serviceCardsObserver.observe(card);
+        });
+
+        // Títulos y subtítulos
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('animar');
+            observer.unobserve(entry.target);
+            }
+        });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.services-title, .services-subtitle, .service-card').forEach(el => {
+        observer.observe(el);
+        });
+
+        // HERO (título, subtítulo, descripción)
+        const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('aparecer-lateral');
+            heroObserver.unobserve(entry.target);
+            }
+        });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.hero-title, .hero-subtitle, .hero-description').forEach(el => {
+        heroObserver.observe(el);
+        });
+
+        // Desde abajo
+        const observerDesdeAbajo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('animar-activo');
+            observerDesdeAbajo.unobserve(entry.target);
+            }
+        });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.animar-desde-abajo').forEach(el => {
+        observerDesdeAbajo.observe(el);
+        });
+
+        // ========================
+        // GALERÍA INTERACTIVA
+        // ========================
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        const gallerySection = document.querySelector('.gallery-section');
+        const gallerySubject = document.getElementById('gallery-subject');
+        const galleryDesc = document.getElementById('gallery-desc');
+
+        const galleryData = {
+            nebula: {
+                subject: 'Deep Space',
+                description: 'From glowing nebulas to powerful black holes, each image reveals the breathtaking beauty of our universe – up close and in motion.',
+                bgClass: 'nebula-bg'
+            },
+            earth: {
+                subject: 'Our Blue Planet',
+                description: 'Witness the stunning beauty of Earth from space, showcasing our planet\'s diverse landscapes, weather patterns, and the thin atmosphere that protects all life.',
+                bgClass: 'earth-bg'
+            }
+        };
+
+        galleryImages.forEach(image => {
+            image.addEventListener('click', () => {
+                const type = image.dataset.type;
+
+                // Quitar clase active y restaurar clases normales a ambas imágenes
+                galleryImages.forEach(img => {
+                    img.classList.remove('active');
+                    if (img.classList.contains('nebula')) {
+                        img.classList.remove('earth-active');
+                        img.classList.add('nebula');
+                    } else if (img.classList.contains('earth')) {
+                        img.classList.remove('nebula-active');
+                        img.classList.add('earth');
+                    }
+                });
+                // Activar la imagen seleccionada
+                image.classList.add('active');
+
+                // Cambiar fondo y texto
+                gallerySection.className = `gallery-section parallax ${galleryData[type].bgClass}`;
+                gallerySubject.textContent = galleryData[type].subject;
+                galleryDesc.textContent = galleryData[type].description;
+            });
+        });
+
+        // ========================
+        // SCROLL SUAVE PARA LINKS
+        // ========================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+        });
+
+        // ========================
+        // ESTRELLAS INTERACTIVAS
+        // ========================
+        function createStars() {
+        const heroSection = document.querySelector('.hero-section');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.style.cssText = `
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation: twinkle ${2 + Math.random() * 3}s ease-in-out infinite alternate;
+            opacity: ${0.3 + Math.random() * 0.7};
+            `;
+            heroSection.appendChild(star);
+        }
+        }
+        createStars();
+
+        // ========================
+        // EFECTO FLOTANTE HOVER
+        // ========================
+        document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.05)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+        });
+
+        // ========================
+        // EFECTO DE ESCRITURA
+        // ========================
+        function typeEffect() {
+        const heroTitle = document.querySelector('.hero-title');
+        const text = 'HERO SECTION';
+        let index = 0;
+        heroTitle.textContent = '';
+
+        function type() {
+            if (index < text.length) {
+            heroTitle.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+            }
+        }
+
+        setTimeout(type, 1000);
+        }
+        typeEffect();
+
+        // --- HOME ASTROVERSE animación según scroll ---
+        let homeAstroverseReady = false;
+
+        function syncHomeAstroverseWithScroll() {
+            const container = document.getElementById('home-animation');
+            if (!container || !homeAnimation || !homeAstroverseReady) return;
+            const rect = container.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                const scrollPercent = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1);
+                const frame = scrollPercent * homeAnimation.totalFrames;
+                homeAnimation.goToAndStop(frame, true);
+            }
+        }
+
+        if (window.homeAnimation) {
+            homeAnimation.addEventListener('DOMLoaded', function() {
+                homeAstroverseReady = true;
+                syncHomeAstroverseWithScroll();
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(syncHomeAstroverseWithScroll);
+        });
+        window.addEventListener('resize', syncHomeAstroverseWithScroll);
+        window.addEventListener('load', syncHomeAstroverseWithScroll);
+
+        // Parallax + animated stars background for Fun Fact section
+        (function() {
+            const canvas = document.getElementById('stars-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            let stars = [];
+            const numStars = 300; // más estrellas
+
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            function createStars() {
+                stars = [];
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.5 + 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5, // más velocidad vertical
+                        speedX: (Math.random() - 0.5) * 0.25, // más velocidad horizontal
+                        parallax: Math.random() * 0.5 + 0.5
+                    });
+                }
+            }
+
+            function drawStars(scrollY) {
+                ctx.clearRect(0, 0, width, height);
+                for (let star of stars) {
+                    ctx.save();
+                    ctx.beginPath();
+                    let y = star.y + scrollY * star.parallax * 0.2;
+                    let x = star.x;
+                    ctx.arc(x, y, star.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'white';
+                    ctx.globalAlpha = 0.7 + Math.random() * 0.3;
+                    ctx.shadowColor = '#fff';
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            function animateStars() {
+                for (let star of stars) {
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+                    // wrap around
+                    if (star.x < 0) star.x = width;
+                    if (star.x > width) star.x = 0;
+                    if (star.y < 0) star.y = height;
+                    if (star.y > height) star.y = 0;
+                }
+            }
+
+            function animate() {
+                const scrollY = window.scrollY || window.pageYOffset;
+                animateStars();
+                drawStars(scrollY);
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createStars();
+            });
+
+            resizeCanvas();
+            createStars();
+            animate();
+        })();
+
+        // Animación de aparición del texto Fun Fact solo cuando la sección es visible
+        (function() {
+            const section = document.querySelector('.funfact-section');
+            const title = document.querySelector('.funfact-title');
+            const desc = document.querySelector('.funfact-desc');
+            if (!section || !title || !desc) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        title.classList.add('visible');
+                        setTimeout(() => desc.classList.add('visible'), 600);
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.4 });
+            observer.observe(section);
+        })();
+
+        // Footer animated stars background
+        (function() {
+            const canvas = document.getElementById('footer-stars-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            let stars = [];
+            const numStars = 250;
+
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            function createStars() {
+                stars = [];
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.4 + 0.4,
+                        speedY: (Math.random() - 0.5) * 0.35,
+                        speedX: (Math.random() - 0.5) * 0.18,
+                        parallax: Math.random() * 0.5 + 0.5
+                    });
+                }
+            }
+
+            function drawStars(scrollY) {
+                ctx.clearRect(0, 0, width, height);
+                for (let star of stars) {
+                    ctx.save();
+                    ctx.beginPath();
+                    let y = star.y + scrollY * star.parallax * 0.18;
+                    let x = star.x;
+                    ctx.arc(x, y, star.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'white';
+                    ctx.globalAlpha = 0.7 + Math.random() * 0.3;
+                    ctx.shadowColor = '#fff';
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            function animateStars() {
+                for (let star of stars) {
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+                    if (star.x < 0) star.x = width;
+                    if (star.x > width) star.x = 0;
+                    if (star.y < 0) star.y = height;
+                    if (star.y > height) star.y = 0;
+                }
+            }
+
+            function animate() {
+                const scrollY = window.scrollY || window.pageYOffset;
+                animateStars();
+                drawStars(scrollY);
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createStars();
+            });
+
+            resizeCanvas();
+            createStars();
+            animate();
+        })();
+
+        // Footer text and icons animation on intersection
+        (function() {
+            const section = document.querySelector('.astro-footer');
+            const title = document.querySelector('.footer-title');
+            const socials = document.querySelector('.footer-socials');
+            const copy = document.querySelector('.footer-copy');
+            if (!section || !title || !socials || !copy) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        title.classList.add('visible');
+                        setTimeout(() => socials.classList.add('visible'), 500);
+                        setTimeout(() => copy.classList.add('visible'), 1000);
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(section);
+        })();
+
+        // About section animated stars background
+        (function() {
+            const section = document.getElementById('about');
+            const canvas = document.getElementById('about-stars-canvas');
+            if (!canvas || !section) return;
+            const ctx = canvas.getContext('2d');
+            let width = section.offsetWidth;
+            let height = section.offsetHeight;
+            let stars = [];
+            const numStars = 180;
+
+            function resizeCanvas() {
+                width = section.offsetWidth;
+                height = section.offsetHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            function createStars() {
+                stars = [];
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.2 + 0.3,
+                        speedY: (Math.random() - 0.5) * 0.25,
+                        speedX: (Math.random() - 0.5) * 0.12,
+                        parallax: Math.random() * 0.5 + 0.5
+                    });
+                }
+            }
+
+            function drawStars(scrollY) {
+                ctx.clearRect(0, 0, width, height);
+                for (let star of stars) {
+                    ctx.save();
+                    ctx.beginPath();
+                    let y = star.y + scrollY * star.parallax * 0.1;
+                    let x = star.x;
+                    ctx.arc(x, y, star.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'white';
+                    ctx.globalAlpha = 0.6 + Math.random() * 0.4;
+                    ctx.shadowColor = '#fff';
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            function animateStars() {
+                for (let star of stars) {
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+                    if (star.x < 0) star.x = width;
+                    if (star.x > width) star.x = 0;
+                    if (star.y < 0) star.y = height;
+                    if (star.y > height) star.y = 0;
+                }
+            }
+
+            function animate() {
+                const scrollY = window.scrollY || window.pageYOffset;
+                animateStars();
+                drawStars(scrollY);
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createStars();
+            });
+
+            resizeCanvas();
+            createStars();
+            animate();
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var planet = document.querySelector('.planet-anim');
+            if (planet) {
+                planet.addEventListener('mouseenter', function() {
+                    planet.classList.add('hide');
+                });
+                planet.addEventListener('mouseleave', function() {
+                    planet.classList.remove('hide');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
